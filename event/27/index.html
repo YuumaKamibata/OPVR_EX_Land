@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://exland.operationvr.info/event/23/catalog/" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="OperationVR-EXHIBITION" />
+<meta property="og:title" content="OperationVR-EXTRA #5 サークルカタログ" />
+<meta property="og:description" content="スマホで気軽に参加できるバーチャル同人誌イベントです。" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="OperationVR-EXTRA #5 サークルカタログ" />
+<title>サークルリスト：OperationVR-EXTRA #5</title>
+<link rel="stylesheet" href="https://www.operationvr.info/css/style-exhibition.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.operationvr.info/css/ekko-lightbox.css">
+</head>
+
+<body>
+
+<!-- コンテナ -->
+<div class="container">
+
+<!-- ヘッダ -->
+<div class="header">
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <h1>OperationVR: EXHIBITION
+                <small class="root-category">番外地</small>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<!-- メイン -->
+<div class="main">
+    <!-- share -->
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+			data-show-count="false">Tweet</a>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+
+    <!-- 諸注意 -->
+    <div class="row">
+		<div class="col-sm-12">
+			<h2>OperationVR-EXTRA #5</h2>
+			<h1 class="mb-4">サークルカタログ</h1>
+
+			<h3>撮影許可レベルについて</h3>
+			<p>OPVR-EXで開催するすべてのイベントは、サークルごとにどこまで撮影を許すかの申請をいただいています（配置にも影響しています）<br>
+			SNSや参加レポなどでキャプチャつきで当イベントを取り上げていただける際には、各サークル様の意向を汲んでいただければ幸いです。</p>
+
+			<button class="btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#exp_permission" aria-expanded="false" aria-controls="exp_permission">撮影許可レベルについての説明を見る</button>
+
+			<div class="collapse mt-4" id="exp_permission">
+			<h4><span class="badge badge-danger">撮影不可</span></h4>
+			<p><b>キャプチャを撮らないでください。</b><br>
+			やむを得ず映り込む場合は、該当サークルのブースに塗りつぶし、ぼかし、モザイクなどをかけてください。</p>
+			<h4><span class="badge badge-primary">ブース撮影可</span></h4>
+			<p>該当サークルのブース（敷布・POP・ポスター）を撮影できます。<br>
+			ただし、卓上の出展物が映り込む場合は塗りつぶし、ぼかし、モザイクなどをかけてください。</p>
+			<h4><span class="badge badge-primary">表紙撮影可</span></h4>
+			<p>該当サークルのブースと卓上の出展物を撮影できます。<br>
+			ただし、見本誌を開いた本文や、サンプル画像は撮影しないでください。<br>
+			やむを得ず映り込む場合は、塗りつぶし、ぼかし、モザイクなどをかけてください。</p>
+			<h4><span class="badge badge-primary">全撮影可</span></h4>
+			<p>該当サークルのブースから卓上、本文、サンプルまですべてを撮影できます。</p>
+			</div>
+
+			<h4 class="mt-4">取材の方へ</h4>
+			<p>上記許可レベルは、サークル参加・一般参加のかたが、自サークルのPR、イベントのレポートを目的に撮影する場合に限ります。<br>
+			取材目的で撮影を行われる場合は、事前に <span style="white-space:nowrap;"><i class="fas fa-caret-square-right text-danger"></i> <a href="/support">運営までお問い合わせください</a></span>。</p>
+
+		</div>
+	</div>
+
+    <hr>
+
+    <div class="row">
+		<div class="col-sm-12">
+			<h3>サークル一覧</h3>
+				<p>配置はホール名 列名-ブース番号で表記しています。（例）ホールA A-1</p>
+		</div>
+	</div>
+
+    <div class="row border-top border-left" id="container_circlelist">
+    </div>
+</div>
+
+</div>
+<!-- /コンテナ -->
+
+</body>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/366d094b7e.js" crossorigin="anonymous"></script>
+<script src="https://www.operationvr.info/js/ekko-lightbox.js"></script>
+<script>
+const event_id = 23;
+$(document).ready(function(){
+    // JSON読み込み
+    $.ajax({
+        type: 'GET',
+        url: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/json/' + event_id + '/circle.json',
+        dataType: 'json',
+        async: false
+    }).then(
+        // 成功
+        function(json){
+            console.log('読み込みに成功しました');
+            buildHtml(json);
+        },
+        // 失敗
+        function(){
+            console.log('読み込みに失敗しました。');
+        }
+    );
+	// lightboxでサークルカット表示
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+	    event.preventDefault();
+	    $(this).ekkoLightbox();
+	});
+});
+
+// JSONを受け取ってHTMLをビルド
+function buildHtml(json){
+    // すべてのサークルリストの親要素
+    let container_circlelist = $('#container_circlelist');
+    json.forEach(function(data){
+        console.log(data);
+        // ラッパー
+        let border_wrapper = $('<div></div', {
+            "class": 'col-md-6 border-right border-bottom py-2'
+        });
+        let row = $('<div></div>', {
+            "class": 'row'
+        });
+        let content_wrapper = $('<div></div>', {
+            "class": 'col-sm-6 col-md-9'
+        });
+        // サークル名
+        // TODO:よみがながJSONにない（別にいいかな）
+        let head = $('<h4>' + data['circle_name'] + '<small>' + '読みがな' + '</small>' + '</h4>');
+        // タグ（プチ、メインジャンル、撮影レベル等）
+        // TODO 別関数でやるのがよいかも
+        let tag = $('<p></p>', {
+            "class": 'tag'
+        });
+        tag.text(data['genre']);
+        // PR
+        let pr = $('<p></p>');
+        pr.text(data['pr']);
+        // カット
+        // TODO:フラグがJSONにないので出力するように要修正
+        let cut_wrapper = $('<div></div>', {
+            "class": 'col-sm-6 col-md-3'
+        });
+        let cut_link = $('<a></a>', {
+            href: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
+            "data-toggle": 'lightbox'
+        });
+        let cut = $('<img/>', {
+            src: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
+            alt: data['circle_name'],
+            "class": 'img-fluid'
+        });
+        // TODO：リンク
+        // 組み立て
+        cut.appendTo(cut_link);
+        cut_link.appendTo(cut_wrapper);
+        cut_wrapper.appendTo(row);
+        head.appendTo(content_wrapper);
+        tag.appendTo(content_wrapper);
+        pr.appendTo(content_wrapper);
+        content_wrapper.appendTo(row);
+        // 親要素に追加
+        row.appendTo(border_wrapper);
+        border_wrapper.appendTo(container_circlelist);
+
+    });
+
+}
+</script>
+</html>
