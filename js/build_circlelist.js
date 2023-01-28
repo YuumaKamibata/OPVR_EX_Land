@@ -59,15 +59,30 @@ function buildHtml(json){
         let cut_wrapper = $('<div></div>', {
             "class": 'col-sm-6 col-md-3'
         });
-        let cut_link = $('<a></a>', {
-            href: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
-            "data-toggle": 'lightbox'
-        });
-        let cut = $('<img/>', {
-            src: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
-            alt: data['circle_name'],
-            "class": 'img-fluid'
-        });
+        let cut_link;
+        let cut;
+        if(data['cut_flag'] == 1) {
+            cut_link = $('<a></a>', {
+                href: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
+                "data-toggle": 'lightbox'
+            });
+            cut = $('<img/>', {
+                src: 'https://operationvr.s3.ap-northeast-1.amazonaws.com/img/' + event_id + '/circle/' + data['circle_entry_no'] + '/cut.jpg',
+                alt: data['circle_name'],
+                "class": 'img-fluid'
+            });    
+        } else {
+            cut_link = $('<a></a>', {
+                href: 'https://placehold.jp/512x512.png?text=' + data['circle_name'],
+                "data-toggle": 'lightbox'
+            });
+            cut = $('<img/>', {
+                src: 'https://placehold.jp/512x512.png?text=' + data['circle_name'],
+                alt: data['circle_name'],
+                "class": 'img-fluid'
+            });
+    
+        }
         // TODO：リンク
         let links = createLink(data);
         // 組み立て
