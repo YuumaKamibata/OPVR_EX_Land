@@ -46,16 +46,13 @@ function buildHtml(json){
             "class": 'col-sm-6 col-md-9'
         });
         // サークル名
-        // TODO:よみがながJSONにない
-        let head = $('<h4>' + data['booth_row'] + '-' + data['booth_no'] + '&nbsp;' + data['circle_name'] + ' <small>' + '読みがな' + '</small>' + '</h4>');
+        let head = $('<h4>' + data['booth_row'] + '-' + data['booth_no'] + '&nbsp;' + data['circle_name'] + ' <small>' + data['circle_name_kana'] + '</small>' + '</h4>');
         // タグ（プチ、メインジャンル、撮影レベル等）
-        // TODO:撮影レベルがJSONにない
         let tag = createTag(data);
         // PR
         let pr = $('<p></p>');
         pr.text(data['pr']);
         // カット
-        // TODO:フラグがJSONにないので出力するように要修正
         let cut_wrapper = $('<div></div>', {
             "class": 'col-sm-6 col-md-3'
         });
