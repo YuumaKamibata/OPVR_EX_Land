@@ -145,7 +145,7 @@ function createTag(data){
     let wrapper = $('<p></p>', {
         'class': 'tag'
     });
-    petit.appendTo(wrapper);
+    //petit.appendTo(wrapper);
     genre.appendTo(wrapper);
     photo_level.appendTo(wrapper);
     return wrapper;
